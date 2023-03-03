@@ -1,0 +1,15 @@
+<div class="form-group mt-5">
+    <input type="text" class="form-control" [(ngModel)]="newItem" (keyup.enter)="addItem()">
+    <button class="btm btn-danger" (click)="addItem()" [disabled]="newItem === ''">Dodaj</button>
+    <button class="btm btn-danger" (click)="sortItem()" >Sort</button>
+</div>
+
+
+
+<ul class="list-group mt-5">
+    <li class="list-group-item" *ngFor="let item of todoItems" [ngClass]="{'doneCSS':item.doneText === true}">
+        <app-todo-item [todoItem]="item" (itemToDelete)="removeItem($event)"></app-todo-item>
+        <button (click)="doneItem(item)">Done</button>
+    </li>
+    
+</ul>
